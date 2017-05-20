@@ -12,8 +12,8 @@ module.exports.index = function(req, res){
 };
 
 module.exports.commands = function(req, res){
-  let text = req.body.text;
+  let commandText = req.body.text;
   // implement your bot here ...
-  console.log (text);
-  handlecommand.help(res);
+  console.log (commandText);
+  handlecommand.help(res, commandText);
 };

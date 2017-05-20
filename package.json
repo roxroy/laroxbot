@@ -1,8 +1,8 @@
 {
   "name": "laroxbot",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Get information and quick access to programming resources.",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
