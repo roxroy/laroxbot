@@ -3,12 +3,7 @@
 function help(res) {
 	let data = {
 	  response_type: 'in_channel', // public to the channel
-	  text: '302: Found',
-	  attachments:[
-	    {
-	      image_url: 'https://http.cat/302.jpg'
-	    }
-	]};
+	  text: 'Hello: ' + new Date() };
 	res.json(data);
 } 
 

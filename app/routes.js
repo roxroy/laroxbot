@@ -1,7 +1,11 @@
 'use strict';
 
-var handlecommand = require('./handlecommand')
+var handlecommand = require('./handlecommand');
+var auth = require('./auth');
 
+module.exports.auth = function(req, res){
+  auth(req, res);
+};
 
 module.exports.index = function(req, res){
   res.render('index');

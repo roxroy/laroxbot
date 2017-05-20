@@ -4,6 +4,7 @@ var express = require('express')
 var path = require('path')
 var bodyParser = require('body-parser');
 
+var auth = require('./app/auth');
 var routes = require('./app/routes');
 var app = express()
 
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', __dirname + '/public');
 
+app.get('/slack', routes.auth);
 app.get('/', routes.index);
 app.post('/', routes.commands);
 
