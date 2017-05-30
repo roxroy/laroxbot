@@ -1,38 +1,43 @@
 'use strict';
 
-let messageTemplate = function(text) {
-   	return {
-		  response_type: 'in_channel', // public to the channel
-		  text:  text
-	};
+require('dotenv').config();
+const messageTemplate =  require('./message-template');
+
+const randomNumber = function(low, high) {
+	return Math.floor(Math.random() * (high - low)) + low;
 }
 
 function help(res, commandText) {
 	let commandParts = commandText.split(' ');
 	const command = commandParts[0];
-	let message = '';
+	let commandMessage = '',
+	     message;
 
 	switch (command) {
 		case '' :
-			message += 'get a random chunk of wisdom';
+			commandMessage += 'get a random chunk of wisdom';
+			message = messageTemplate.textFormat(commandMessage);
 		break;
 		case 'bash' :
-			message += 'get information about the command and its syntax';
+			commandMessage += 'get information about the command and its syntax';
+			message = messageTemplate.textFormat(commandMessage);
 		break;
 		case 'help' :
-			message += 'learn how to';
+			commandMessage += 'learn how to';
+			message = messageTemplate.textFormat(commandMessage);
 		break;
 		case 'rant' :
-			message += 'get the ultimate push';
+			//message += 'get the ultimate push'; 
+			message = messageTemplate.imageFormat(randomNumber(1,5));
 		break;
 		default:
 			if (Number.parseInt(command) > 1 ) {
-				message += 'get a specific chunk of wisdom';
+				commandMessage += 'get a specific chunk of wisdom';
 			}
+			message = messageTemplate.textFormat(commandMessage);
 		break;
 	}
 
-	messageTemplate(message);
 	res.json(message);
 } 
 
