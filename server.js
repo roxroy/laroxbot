@@ -1,5 +1,3 @@
-'use strict';
-
 var express = require('express')
 var path = require('path')
 var bodyParser = require('body-parser');
@@ -11,8 +9,9 @@ var app = express()
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
-app.use(express.static(path.join(__dirname, 'public')))
-app.set('views', __dirname + '/public');
+app.use(express.static(path.join(__dirname, '/public')))
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
 app.get('/slack', routes.auth);
 app.get('/', routes.index);

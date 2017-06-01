@@ -1,14 +1,13 @@
-'use strict';
-
 var handlecommand = require('./handlecommand');
 var auth = require('./auth');
+require('dotenv').config()
 
 module.exports.auth = function(req, res){
   auth(req, res);
 };
 
 module.exports.index = function(req, res){
-  res.render('index');
+  res.render('index', { client_id: process.env.SLACK_CLIENT_ID });
 };
 
 module.exports.commands = function(req, res){
