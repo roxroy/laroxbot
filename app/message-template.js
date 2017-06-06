@@ -9,6 +9,18 @@ module.exports.textFormat = function(text) {
 	};
 }
 
+module.exports.bashFormat = function(command, summary) {   
+    return {
+    "attachments": [
+        {
+          "pretext": `Source: <http://man.he.net/man1/${command}>`,
+          "text": `${summary}\n...\n... See <http://man.he.net/man1/${command}> for complete text.`,
+          "mrkdwn_in": "text"
+        }
+    ]
+  };
+}
+
 module.exports.imageFormat = function(imageIndex) {		
 	const BASE_SITE_URL = process.env.BASE_SITE_URL;
    	return {
